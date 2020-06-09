@@ -1,11 +1,5 @@
 # NestJs example app
 
-Following NestJs [starting guide](https://docs.nestjs.com/first-steps)
-```bash
-$ npm i -g @nestjs/cli
-$ nest new nestjs-example
-```
-
 ## Installation
 
 ```bash
@@ -33,4 +27,33 @@ $ yarn test:e2e
 
 # test coverage
 $ yarn test:cov
+```
+
+## Do it yourself:
+Following NestJs [starting guide](https://docs.nestjs.com/first-steps)
+#### 1- Setup NestJs framework.
+```bash
+$ npm i -g @nestjs/cli
+$ nest new nestjs-example
+```
+
+#### 2- Add .env configuration and default node debugger.
+```bash
+$ yarn add @hapi/joi
+$ yarn add dotenv
+$ yarn add @nestjs/config
+$ echo PORT=3000 > .env
+```
+
+#### 3- Add swagger.
+```
+$ yarn add @nestjs/swagger swagger-ui-express
+```
+
+#### Create the `Users` module
+```bash
+$ nest generate module users
+$ nest generate controller users
+$ nest generate service users
+$ nest generate class users/dto/users.dto --no-spec
 ```
