@@ -3,9 +3,11 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 import config from './config';
+import { GlobalExceptionFilter } from './common/global-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new GlobalExceptionFilter());
 
   const options = new DocumentBuilder()
     .setTitle('Nest example')

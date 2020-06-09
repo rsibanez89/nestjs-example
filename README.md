@@ -62,3 +62,8 @@ $ nest generate class users/dto/users.dto --no-spec
 ```bash
 $ nest generate middleware common/http-logger
 ```
+
+#### 6- Add global exception filter
+```bash
+$ nest generate filter common/global-exception
+```
