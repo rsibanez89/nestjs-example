@@ -60,10 +60,15 @@ $ nest generate class users/dto/users.dto --no-spec
 
 #### 5- Add http logger middleware
 ```bash
-$ nest generate middleware common/http-logger
+$ nest generate middleware common/http-logger --no-spec
 ```
 
 #### 6- Add global exception filter
 ```bash
-$ nest generate filter common/global-exception
+$ nest generate filter common/global-exception --no-spec
+```
+
+#### 6- Add request validation pipe
+```bash
+$ nest generate pipe common/request-validation --no-spec
 ```
