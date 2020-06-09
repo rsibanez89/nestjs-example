@@ -50,10 +50,15 @@ $ echo PORT=3000 > .env
 $ yarn add @nestjs/swagger swagger-ui-express
 ```
 
-#### Create the `Users` module
+#### 4- Create the `Users` module
 ```bash
 $ nest generate module users
 $ nest generate controller users
 $ nest generate service users
 $ nest generate class users/dto/users.dto --no-spec
+```
+
+#### 5- Add http logger middleware
+```bash
+$ nest generate middleware common/http-logger
 ```
