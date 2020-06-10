@@ -6,7 +6,8 @@ dotenv.config();
 
 // Validate .env file
 const configSchema = Joi.object({
-  PORT: Joi.number().default(3000)
+  PORT: Joi.number().default(3000),
+  JWT_SECRET: Joi.string().default('secretKey'),
 }).unknown().required();
 
 const { error, value } = configSchema.validate(process.env);
@@ -16,6 +17,7 @@ if (error) {
 
 // Export configs
 const config = {
-  port: value.PORT
+  port: value.PORT,
+  secretKey: value.JWT_SECRET,
 };
 export default config;

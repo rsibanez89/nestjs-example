@@ -73,12 +73,18 @@ $ nest generate filter common/global-exception --no-spec
 $ nest generate pipe common/request-validation --no-spec
 ```
 
-#### 8- Add authentication guard
+#### 8- Add user and password authentication guard
 ```bash
 $ yarn add @nestjs/passport passport passport-local
-$ yarn add @types/passport-local
+$ yarn add @types/passport-local --dev
 ---
 $ nest g module auth
 $ nest generate controller auth --no-spec
 $ nest g service auth --no-spec
+```
+
+#### 9- Add jwt authentication guard
+```bash
+$ yarn add @nestjs/jwt passport-jwt
+$ yarn add @types/passport-jwt --dev
 ```
