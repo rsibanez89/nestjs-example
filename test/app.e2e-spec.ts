@@ -21,4 +21,18 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/auth/login (POST) - 201', () => {
+    return request(app.getHttpServer())
+      .post('/auth/login')
+      .send({ username: 'rod', password: 'rod' })
+      .expect(201);
+  });
+
+  it('/auth/login (POST) - 401', () => {
+    return request(app.getHttpServer())
+      .post('/auth/login')
+      .send({ username: 'rod', password: 'rod1' })
+      .expect(401);
+  });
 });

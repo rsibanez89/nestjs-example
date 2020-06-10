@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "0ea8da9f-7e3f-424f-be7d-403ef309f332",
+		"name": "NestJs Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get /",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{nestjs-example-host}}",
+					"host": [
+						"{{nestjs-example-host}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /exception",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{nestjs-example-host}}/exception",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"exception"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sandeep\",\r\n  \"password\": \"sandeep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{nestjs-example-host}}/users",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e0e38a2-9acc-41f8-a1d7-0e0e6ca42552",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"if (pm.response.code == 201){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.test(\"Response has proper format\", function () {\r",
+							"        pm.expect(jsonData.token).to.be.not.empty;\r",
+							"    });\r",
+							"    \r",
+							"    pm.environment.set(\"nest-example-jwt\", jsonData.token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"rod\",\r\n  \"password\": \"rod\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{nestjs-example-host}}/auth/login",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{nest-example-jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sandeep\",\r\n  \"password\": \"sandeep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{nestjs-example-host}}/users",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /users/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{nest-example-jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sandeep\",\r\n  \"password\": \"sandeep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{nestjs-example-host}}/users/1",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put /users/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{nest-example-jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sandeep\",\r\n  \"password\": \"sandeep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{nestjs-example-host}}/users/1",
+					"host": [
+						"{{nestjs-example-host}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
