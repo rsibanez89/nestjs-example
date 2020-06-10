@@ -68,7 +68,17 @@ $ nest generate middleware common/http-logger --no-spec
 $ nest generate filter common/global-exception --no-spec
 ```
 
-#### 6- Add request validation pipe
+#### 7- Add request validation pipe
 ```bash
 $ nest generate pipe common/request-validation --no-spec
+```
+
+#### 8- Add authentication guard
+```bash
+$ yarn add @nestjs/passport passport passport-local
+$ yarn add @types/passport-local
+---
+$ nest g module auth
+$ nest generate controller auth --no-spec
+$ nest g service auth --no-spec
 ```
